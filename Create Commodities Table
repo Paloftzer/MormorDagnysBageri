@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS Commodities;
+
+CREATE TABLE Commodities (
+    Id INTEGER PRIMARY KEY,
+    ArticleId TEXT NOT NULL UNIQUE,
+    Name TEXT NOT NULL
+);

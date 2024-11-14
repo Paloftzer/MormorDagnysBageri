@@ -1,0 +1,32 @@
+DELETE FROM Commodities;
+
+INSERT INTO Commodities (
+    Id,
+    ArticleId,
+    Name
+)
+VALUES (
+    1,
+    '1J78HAC2',
+    'Wheat Flour'
+),
+(
+    2,
+    '5678TAAS',
+    'Sugar'
+),
+(
+    3,
+    '1345IGHL',
+    'Butter'
+),
+(
+    4,
+    '56789SDF',
+    'Eggs'
+),
+(
+    5,
+    'UIASDF12',
+    'Baking Powder'
+);

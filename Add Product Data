@@ -1,0 +1,22 @@
+DELETE FROM Products;
+
+INSERT INTO Products (
+    Id,
+    Name,
+    Type
+)
+VALUES (
+    1,
+    'Bun',
+    'Bakery'
+),
+(
+    2,
+    'Bread',
+    'Bakery'
+),
+(
+    3,
+    'Cake',
+    'Confectionary'
+);

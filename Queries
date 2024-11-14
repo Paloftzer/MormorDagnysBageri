@@ -1,0 +1,57 @@
+-- List all suppliers with all information related to them
+SELECT
+    Suppliers.Name AS SupplierName,
+    Suppliers.Email AS SupplierEmail,
+    Suppliers.ContactPerson,
+    SupplierPhones.PhoneNumber,
+    SupplierAddresses.Address,
+    Commodities.Name AS CommodityName,
+    Commodities.ArticleId,
+    SupplierProducts.PricePerKg
+FROM Suppliers INNER JOIN SupplierAddresses
+    ON Suppliers.Id = SupplierAddresses.SupplierId INNER JOIN SupplierPhones
+    ON Suppliers.Id = SupplierPhones.SupplierId INNER JOIN SupplierProducts
+    ON Suppliers.Id = SupplierProducts.SupplierId INNER JOIN Commodities
+    ON SupplierProducts.CommodityId = Commodities.Id
+ORDER BY Suppliers.Id;
+
+-- List all Commodities with their corresponding supplier
+SELECT
+    Commodities.Name AS CommodityName,
+    Commodities.ArticleId,
+    SupplierProducts.PricePerKg,
+    Suppliers.Name AS SupplierName,
+    Suppliers.Email AS SupplierEmail
+FROM Commodities INNER JOIN SupplierProducts
+    ON Commodities.Id = SupplierProducts.CommodityId INNER JOIN Suppliers
+    ON SupplierProducts.SupplierId = Suppliers.Id
+ORDER BY Suppliers.Id;
+
+-- List all Recipes with their ingredients and the needed quantities
+SELECT
+    Products.Name AS ProductName,
+    Commodities.Name AS CommodityName,
+    Recipes.NeededQuantity AS NeededQuantity
+FROM Recipes INNER JOIN Products
+    ON Recipes.ProductId = Products.Id INNER JOIN Commodities
+    ON Recipes.CommodityId = Commodities.Id
+ORDER BY Products.Id;
+
+-- List all Suppliers providing x commodity (in this case Sugar)
+SELECT
+    Suppliers.Name AS SupplierName,
+    Suppliers.Email AS SupplierEmail,
+    Commodities.Name AS CommodityName,
+    Commodities.ArticleId,
+    SupplierProducts.PricePerKg
+FROM Suppliers INNER JOIN SupplierProducts
+    ON Suppliers.Id = SupplierProducts.SupplierId INNER JOIN Commodities
+    ON SupplierProducts.CommodityId = Commodities.Id
+WHERE Commodities.Name = 'Sugar';
+
+-- List inventory quantity for each commodity
+SELECT
+    Commodities.Name AS CommodityName,
+    Inventory.AvailableQuantity
+FROM Inventory INNER JOIN Commodities
+    ON Inventory.CommodityId = Commodities.Id;

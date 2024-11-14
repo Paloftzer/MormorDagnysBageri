@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS Inventory;
+
+CREATE TABLE Inventory (
+    CommodityId INTEGER PRIMARY KEY,
+    AvailableQuantity FLOAT NOT NULL,
+    FOREIGN KEY (CommodityId) REFERENCES Commodities(Id) ON DELETE CASCADE
+);

@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS Recipes;
+
+CREATE TABLE Recipes (
+    Id INTEGER PRIMARY KEY,
+    ProductId INTEGER NOT NULL,
+    CommodityId INTEGER NOT NULL,
+    NeededQuantity FLOAT NOT NULL,
+    FOREIGN KEY (ProductId) REFERENCES Products(Id) ON DELETE CASCADE,
+    FOREIGN KEY (CommodityId) REFERENCES Commodities(Id) ON DELETE CASCADE,
+    UNIQUE (ProductId, CommodityId)
+);

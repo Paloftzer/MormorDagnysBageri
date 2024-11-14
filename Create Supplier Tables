@@ -1,0 +1,33 @@
+DROP TABLE IF EXISTS Suppliers;
+DROP TABLE IF EXISTS SupplierAddresses;
+DROP TABLE IF EXISTS SupplierPhones;
+DROP TABLE IF EXISTS SupplierProducts;
+
+CREATE TABLE Suppliers (
+    Id INTEGER PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Email TEXT NOT NULL,
+    ContactPerson TEXT NOT NULL
+);
+
+CREATE TABLE SupplierAddresses (
+    SupplierId INTEGER PRIMARY KEY,
+    Address TEXT NOT NULL,
+    FOREIGN KEY (SupplierId) REFERENCES Suppliers(Id) ON DELETE CASCADE
+);
+
+CREATE TABLE SupplierPhones (
+    SupplierId INTEGER,
+    PhoneNumber TEXT,
+    PRIMARY KEY (SupplierId, PhoneNumber),
+    FOREIGN KEY (SupplierId) REFERENCES Suppliers(Id) ON DELETE CASCADE
+);
+
+CREATE TABLE SupplierProducts (
+    SupplierProductId INTEGER PRIMARY KEY,
+    SupplierId INTEGER NOT NULL,
+    CommodityId INTEGER NOT NULL,
+    PricePerKg FLOAT NOT NULL,
+    FOREIGN KEY (SupplierId) REFERENCES Suppliers(Id) ON DELETE CASCADE,
+    FOREIGN KEY (CommodityId) REFERENCES Commodities(Id) ON DELETE CASCADE
+);

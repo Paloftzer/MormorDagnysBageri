@@ -1,0 +1,100 @@
+DELETE FROM Suppliers;
+DELETE FROM SupplierAddresses;
+DELETE FROM SupplierPhones;
+DELETE FROM SupplierProducts;
+
+INSERT INTO Suppliers (
+    Id,
+    Name,
+    Email,
+    ContactPerson
+)
+VALUES (
+    1,
+    'Crumble',
+    'info@crumble.com',
+    'Paul Blart'
+),
+(
+    2,
+    'Blue Sky Bakery',
+    'contact@blueskybakery.com',
+    'Derren Temple'
+),
+(
+    3,
+    'Bon Bon Bake',
+    'support@bonbonbake.com',
+    'Rexanne Ella'
+);
+
+INSERT INTO SupplierAddresses (
+    SupplierId,
+    Address
+)
+VALUES (
+    1,
+    'Boulevard Avenue apartment 223'
+),
+(
+    2,
+    'Frying Pan Alley'
+),
+(
+    3,
+    'Knick Knack Lane'
+);
+
+INSERT INTO SupplierPhones (
+    SupplierId,
+    PhoneNumber
+)
+VALUES (
+    1,
+    '0789 567421'
+),
+(
+    2,
+    '0762 124389'
+),
+(
+    3,
+    '0704 547321'
+);
+
+INSERT INTO SupplierProducts (
+    SupplierProductId,
+    SupplierId,
+    CommodityId,
+    PricePerKg
+)
+VALUES (
+    1,
+    1,
+    1,
+    8.5
+),
+(
+    2,
+    1,
+    2,
+    15.0
+),
+(
+    3,
+    2,
+    3,
+    45.0
+),
+(
+    4,
+    3,
+    4,
+    22.0
+),
+(
+    5,
+    2,
+    5,
+    12.0
+);
